@@ -26,6 +26,9 @@
 		2C76E77916B572D00071D93A /* main_goldenknowledge.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E77416B572D00071D93A /* main_goldenknowledge.png */; };
 		2C76E77A16B572D00071D93A /* main_knowledge_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E77516B572D00071D93A /* main_knowledge_textfield.png */; };
 		2C76E77C16B57EC40071D93A /* main_jameslin.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E77B16B57EC40071D93A /* main_jameslin.png */; };
+		808130C116B6189400B1C641 /* WheresEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808130C016B6189400B1C641 /* WheresEditorViewController.m */; };
+		808130C416B61BC900B1C641 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808130C316B61BC900B1C641 /* MapKit.framework */; };
+		808130C616B6249D00B1C641 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808130C516B6249D00B1C641 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +56,10 @@
 		2C76E77416B572D00071D93A /* main_goldenknowledge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_goldenknowledge.png; sourceTree = "<group>"; };
 		2C76E77516B572D00071D93A /* main_knowledge_textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_knowledge_textfield.png; sourceTree = "<group>"; };
 		2C76E77B16B57EC40071D93A /* main_jameslin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_jameslin.png; sourceTree = "<group>"; };
+		808130BF16B6189400B1C641 /* WheresEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WheresEditorViewController.h; sourceTree = "<group>"; };
+		808130C016B6189400B1C641 /* WheresEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WheresEditorViewController.m; sourceTree = "<group>"; };
+		808130C316B61BC900B1C641 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		808130C516B6249D00B1C641 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				808130C616B6249D00B1C641 /* CoreLocation.framework in Frameworks */,
+				808130C416B61BC900B1C641 /* MapKit.framework in Frameworks */,
 				2C76E74916B510900071D93A /* UIKit.framework in Frameworks */,
 				2C76E74B16B510900071D93A /* Foundation.framework in Frameworks */,
 				2C76E74D16B510900071D93A /* CoreGraphics.framework in Frameworks */,
@@ -90,6 +99,8 @@
 		2C76E74716B510900071D93A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				808130C516B6249D00B1C641 /* CoreLocation.framework */,
+				808130C316B61BC900B1C641 /* MapKit.framework */,
 				2C76E74816B510900071D93A /* UIKit.framework */,
 				2C76E74A16B510900071D93A /* Foundation.framework */,
 				2C76E74C16B510900071D93A /* CoreGraphics.framework */,
@@ -105,6 +116,8 @@
 				2C76E76016B510900071D93A /* MainStoryboard_iPhone.storyboard */,
 				2C76E76616B510900071D93A /* MainViewController.h */,
 				2C76E76716B510900071D93A /* MainViewController.m */,
+				808130BF16B6189400B1C641 /* WheresEditorViewController.h */,
+				808130C016B6189400B1C641 /* WheresEditorViewController.m */,
 				2C76E76316B510900071D93A /* MainStoryboard_iPad.storyboard */,
 				2C76E74F16B510900071D93A /* Supporting Files */,
 			);
@@ -216,6 +229,7 @@
 				2C76E75516B510900071D93A /* main.m in Sources */,
 				2C76E75916B510900071D93A /* AppDelegate.m in Sources */,
 				2C76E76816B510900071D93A /* MainViewController.m in Sources */,
+				808130C116B6189400B1C641 /* WheresEditorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +354,7 @@
 				2C76E76D16B510900071D93A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
