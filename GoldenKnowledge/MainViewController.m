@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "KnowledgeTableViewController.h"
 #import "WheresEditorViewController.h"
 
 @interface MainViewController ()
@@ -41,6 +42,12 @@
     {
         WheresEditorViewController* wheresEditorViewController = segue.destinationViewController;
         wheresEditorViewController.parentMainViewController = self;
+    }
+    else if ([segue.identifier isEqualToString:@"segueIdList"])
+    {
+        UINavigationController* navController = segue.destinationViewController;
+        KnowledgeTableViewController* knowledgeTableViewController = [navController.viewControllers objectAtIndex:0];
+        knowledgeTableViewController.parentMainViewController = self;
     }
 }
 

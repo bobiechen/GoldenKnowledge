@@ -26,6 +26,8 @@
 		2C76E77916B572D00071D93A /* main_goldenknowledge.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E77416B572D00071D93A /* main_goldenknowledge.png */; };
 		2C76E77A16B572D00071D93A /* main_knowledge_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E77516B572D00071D93A /* main_knowledge_textfield.png */; };
 		2C76E77C16B57EC40071D93A /* main_jameslin.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E77B16B57EC40071D93A /* main_jameslin.png */; };
+		2C76E78316B6CBFF0071D93A /* KnowledgeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C76E78216B6CBFF0071D93A /* KnowledgeTableViewController.m */; };
+		2C76E78616B6D4E50071D93A /* 43-film-roll.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E78516B6D4E50071D93A /* 43-film-roll.png */; };
 		808130C116B6189400B1C641 /* WheresEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808130C016B6189400B1C641 /* WheresEditorViewController.m */; };
 		808130C416B61BC900B1C641 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808130C316B61BC900B1C641 /* MapKit.framework */; };
 		808130C616B6249D00B1C641 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808130C516B6249D00B1C641 /* CoreLocation.framework */; };
@@ -56,6 +58,9 @@
 		2C76E77416B572D00071D93A /* main_goldenknowledge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_goldenknowledge.png; sourceTree = "<group>"; };
 		2C76E77516B572D00071D93A /* main_knowledge_textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_knowledge_textfield.png; sourceTree = "<group>"; };
 		2C76E77B16B57EC40071D93A /* main_jameslin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_jameslin.png; sourceTree = "<group>"; };
+		2C76E78116B6CBFF0071D93A /* KnowledgeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeTableViewController.h; sourceTree = "<group>"; };
+		2C76E78216B6CBFF0071D93A /* KnowledgeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeTableViewController.m; sourceTree = "<group>"; };
+		2C76E78516B6D4E50071D93A /* 43-film-roll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "43-film-roll.png"; sourceTree = "<group>"; };
 		808130BF16B6189400B1C641 /* WheresEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WheresEditorViewController.h; sourceTree = "<group>"; };
 		808130C016B6189400B1C641 /* WheresEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WheresEditorViewController.m; sourceTree = "<group>"; };
 		808130C316B61BC900B1C641 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -116,6 +121,8 @@
 				2C76E76016B510900071D93A /* MainStoryboard_iPhone.storyboard */,
 				2C76E76616B510900071D93A /* MainViewController.h */,
 				2C76E76716B510900071D93A /* MainViewController.m */,
+				2C76E78116B6CBFF0071D93A /* KnowledgeTableViewController.h */,
+				2C76E78216B6CBFF0071D93A /* KnowledgeTableViewController.m */,
 				808130BF16B6189400B1C641 /* WheresEditorViewController.h */,
 				808130C016B6189400B1C641 /* WheresEditorViewController.m */,
 				2C76E76316B510900071D93A /* MainStoryboard_iPad.storyboard */,
@@ -141,6 +148,7 @@
 		2C76E76E16B5642A0071D93A /* images & icons */ = {
 			isa = PBXGroup;
 			children = (
+				2C76E78516B6D4E50071D93A /* 43-film-roll.png */,
 				2C76E77B16B57EC40071D93A /* main_jameslin.png */,
 				2C76E77116B572D00071D93A /* main_btn_editortracking.png */,
 				2C76E77216B572D00071D93A /* main_btn_knowledgelist.png */,
@@ -216,6 +224,7 @@
 				2C76E77916B572D00071D93A /* main_goldenknowledge.png in Resources */,
 				2C76E77A16B572D00071D93A /* main_knowledge_textfield.png in Resources */,
 				2C76E77C16B57EC40071D93A /* main_jameslin.png in Resources */,
+				2C76E78616B6D4E50071D93A /* 43-film-roll.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +239,7 @@
 				2C76E75916B510900071D93A /* AppDelegate.m in Sources */,
 				2C76E76816B510900071D93A /* MainViewController.m in Sources */,
 				808130C116B6189400B1C641 /* WheresEditorViewController.m in Sources */,
+				2C76E78316B6CBFF0071D93A /* KnowledgeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
