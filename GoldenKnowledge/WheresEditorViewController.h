@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface WheresEditorViewController : UIViewController
+@class MainViewController;
+
+@interface WheresEditorViewController : UIViewController <MKMapViewDelegate>
+
+@property (nonatomic, assign) MainViewController* parentMainViewController;
+
+// IBActions
+//
+- (IBAction)backToMain:(id)sender;
+
+// IBOutlets
+//
+@property (retain, nonatomic) IBOutlet MKMapView *myMapView;
 
 @end
