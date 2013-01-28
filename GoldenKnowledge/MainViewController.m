@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "WheresEditorViewController.h"
 
 @interface MainViewController ()
 
@@ -33,4 +34,19 @@
     [_viewBackground release];
     [super dealloc];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueIdWheresEditor"])
+    {
+        WheresEditorViewController* wheresEditorViewController = segue.destinationViewController;
+        wheresEditorViewController.parentMainViewController = self;
+    }
+}
+
+- (void)backToMain
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 @end

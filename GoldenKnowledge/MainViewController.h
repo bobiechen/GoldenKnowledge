@@ -10,5 +10,7 @@
 
 @interface MainViewController : UIViewController
 
+- (void)backToMain;
+
 @property (retain, nonatomic) IBOutlet UIImageView *viewBackground;
 @end
