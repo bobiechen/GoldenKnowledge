@@ -23,6 +23,9 @@
     
     
     [self.view sendSubviewToBack:self.viewBackground];
+    
+    [self prepareKnowledgeScrollView];
+    [self prepareButtons];
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,6 +36,9 @@
 
 - (void)dealloc {
     [_viewBackground release];
+    [_btnWheresEditor release];
+    [_btnKnowledgeList release];
+    [_scrollKnowledge release];
     [super dealloc];
 }
 
@@ -51,9 +57,44 @@
     }
 }
 
+- (void)prepareKnowledgeScrollView
+{
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], nil];
+    for (int i = 0; i < 3; ++i)
+    {
+        CGRect frame;
+        frame.origin.x = 0;
+        frame.origin.y = self.scrollKnowledge.frame.size.height * i;
+        frame.size = self.scrollKnowledge.frame.size;
+        
+        UIView* subview = [[UIView alloc] initWithFrame:frame];
+        subview.backgroundColor = [colors objectAtIndex:i];
+        [self.scrollKnowledge addSubview:subview];
+        [subview release];
+    }
+    
+    self.scrollKnowledge.contentSize = CGSizeMake(self.scrollKnowledge.frame.size.width, self.scrollKnowledge.frame.size.height*[colors count]);
+}
+
+- (void)prepareButtons
+{
+    UIImage* imageWheresEditorPressed = [UIImage imageNamed:@"main_btn_editortracking.png"];
+    [self.btnWheresEditor setImage:imageWheresEditorPressed forState:UIControlStateHighlighted];
+    
+    
+    UIImage* imageKnowledgeListPressed = [UIImage imageNamed:@"main_btn_knowledgelist.png"];
+    [self.btnKnowledgeList setImage:imageKnowledgeListPressed forState:UIControlStateHighlighted];
+}
+
 - (void)backToMain
 {
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (void)viewDidUnload {
+    [self setBtnWheresEditor:nil];
+    [self setBtnKnowledgeList:nil];
+    [self setScrollKnowledge:nil];
+    [super viewDidUnload];
+}
 @end

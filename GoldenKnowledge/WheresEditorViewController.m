@@ -66,7 +66,7 @@ static NSString* STATIC_EDITORS_CHOICE = @"想看什麼不會自己寫喔?!";
     regionCenter = [self.myMapView regionThatFits:regionCenter];
     [self.myMapView setRegion:regionCenter animated:YES];
     
-    [self performSelector:@selector(addEditorsChoiceAnnotation) withObject:nil afterDelay:0.5f];
+    [self performSelector:@selector(addEditorsChoiceAnnotation) withObject:nil afterDelay:2.0f];
 }
 
 - (void)addEditorsChoiceAnnotation
