@@ -9,11 +9,17 @@
 #import "KnowledgeTableViewController.h"
 #import "MainViewController.h"
 
+const NSString* JSON_SITE_BASEURL =             @"http://zootheband.com/home/?json=";
+const NSString* JSON_API_GET_CATEGORY_POSTS =   @"get_category_posts=3";    // GoldenKnowledge category id: 3
+const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
+
 @interface KnowledgeTableViewController ()
 
 @end
 
-@implementation KnowledgeTableViewController
+@implementation KnowledgeTableViewController {
+    NSMutableArray* m_arrayKnowledgePosts;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,6 +39,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self performSelector:@selector(fetchKnowledgePosts) withObject:nil afterDelay:0.5];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,16 +64,17 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 2;
+    return [m_arrayKnowledgePosts count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"CellKnowledgeTitle";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
+    cell.textLabel.text = [[m_arrayKnowledgePosts objectAtIndex:indexPath.row] objectForKey:@"title"];
+    cell.detailTextLabel.text = [[m_arrayKnowledgePosts objectAtIndex:indexPath.row] objectForKey:@"date"];
     
     return cell;
 }
@@ -121,6 +130,56 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+- (void)fetchKnowledgePosts
+{
+    if (!m_arrayKnowledgePosts)
+    {
+        m_arrayKnowledgePosts = [[NSMutableArray alloc] init];
+    }
+    
+    [m_arrayKnowledgePosts removeAllObjects];
+    
+    
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", JSON_SITE_BASEURL, JSON_API_GET_CATEGORY_POSTS]];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    
+    NSOperationQueue* queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:queue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+        {
+            // Completion handler
+            if (error)
+            {
+                NSLog(@"KnowledgeTableViewController, failed to fetch knowledge posts");
+            }
+            else
+            {
+                if (data)
+                {
+                    NSDictionary* dictData = [NSJSONSerialization JSONObjectWithData:data
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                               error:nil];
+                    NSDictionary* dictPosts = [dictData objectForKey:JSON_API_KEYWORD_POSTS];
+                    for (NSDictionary* post in dictPosts)
+                    {
+                        NSArray* arrayValues = @[ [post objectForKey:@"id"], [post objectForKey:@"title"],
+                                                    [post objectForKey:@"title_plain"], [post objectForKey:@"date"] ];
+                        NSArray* arrayKeys = @[ @"id", @"title", @"title_plain", @"date" ];
+                        NSDictionary* dictKnowledge = [NSDictionary dictionaryWithObjects:arrayValues forKeys:arrayKeys];
+                        
+                        [m_arrayKnowledgePosts addObject:dictKnowledge];
+                    }
+                }
+                
+                [self.tableView reloadData];
+            }
+        }];
+    
+    [queue release];
 }
 
 
