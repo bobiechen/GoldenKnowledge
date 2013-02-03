@@ -42,6 +42,7 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    [self showFirstTimeLoadingView];
     [self performSelector:@selector(fetchKnowledgePosts) withObject:nil afterDelay:0.5];
 }
 
@@ -200,11 +201,33 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
     [queue release];
 }
 
+- (void)showFirstTimeLoadingView
+{
+    [self.indicatorLoading startAnimating];
+}
+
+- (void)firstTimeLoadingComplete
+{
+    [self.indicatorLoading stopAnimating];
+    [self.viewLoading removeFromSuperview];
+}
+
 - (void)fetchComplete
 {
     m_bLoaded = YES;
+    [self firstTimeLoadingComplete];
     [self.tableView reloadData];
 }
 
 
+- (void)dealloc {
+    [_indicatorLoading release];
+    [_viewLoading release];
+    [super dealloc];
+}
+- (void)viewDidUnload {
+    [self setIndicatorLoading:nil];
+    [self setViewLoading:nil];
+    [super viewDidUnload];
+}
 @end
