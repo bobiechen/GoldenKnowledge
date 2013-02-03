@@ -163,6 +163,24 @@
                                     <segue destination="yTZ-FB-f9h" kind="push" id="NTS-w6-6I7"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CellNoPost" textLabel="AN1-gk-pWa" style="IBUITableViewCellStyleDefault" id="Uej-uM-heb">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="No post. Reload?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AN1-gk-pWa">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="5sM-Qb-L3w" id="9jU-r7-RcR"/>
@@ -277,6 +295,37 @@
         <image name="main_jameslin.png" width="151" height="180"/>
         <image name="main_knowledge_textfield.png" width="451" height="250"/>
     </resources>
+    <classes>
+        <class className="KnowledgeDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/KnowledgeDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="m_imageKnowledgePicture" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="KnowledgeTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/KnowledgeTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToMain:"/>
+            </relationships>
+        </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="btnKnowledgeList" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnWheresEditor" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="imageEditor" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollKnowledge" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="viewBackground" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="WheresEditorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WheresEditorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToMain:"/>
+                <relationship kind="outlet" name="myMapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

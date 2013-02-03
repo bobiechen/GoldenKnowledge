@@ -19,6 +19,7 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
 
 @implementation KnowledgeTableViewController {
     NSMutableArray* m_arrayKnowledgePosts;
+    BOOL m_bLoaded;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -26,6 +27,7 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        m_bLoaded = NO;
     }
     return self;
 }
@@ -64,19 +66,35 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [m_arrayKnowledgePosts count];
+    if (!m_bLoaded)
+        return 0;
+    else if ([m_arrayKnowledgePosts count])
+        return [m_arrayKnowledgePosts count];
+    else if (![m_arrayKnowledgePosts count] && m_bLoaded)
+        return 1;
+    else
+        return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"CellKnowledgeTitle";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell...
-    cell.textLabel.text = [[m_arrayKnowledgePosts objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.detailTextLabel.text = [[m_arrayKnowledgePosts objectAtIndex:indexPath.row] objectForKey:@"date"];
-    
-    return cell;
+    if ([m_arrayKnowledgePosts count])
+    {
+        static NSString *CellIdentifier = @"CellKnowledgeTitle";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        // Configure the cell...
+        cell.textLabel.text = [[m_arrayKnowledgePosts objectAtIndex:indexPath.row] objectForKey:@"title"];
+        cell.detailTextLabel.text = [[m_arrayKnowledgePosts objectAtIndex:indexPath.row] objectForKey:@"date"];
+        
+        return cell;
+    }
+    else
+    {
+        static NSString* CellIdentifier = @"CellNoPost";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        return cell;
+    }
 }
 
 /*
@@ -175,11 +193,17 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
                     }
                 }
                 
-                [self.tableView reloadData];
+                [self fetchComplete];
             }
         }];
     
     [queue release];
+}
+
+- (void)fetchComplete
+{
+    m_bLoaded = YES;
+    [self.tableView reloadData];
 }
 
 
