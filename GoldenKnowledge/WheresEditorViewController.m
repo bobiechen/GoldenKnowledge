@@ -59,6 +59,30 @@ static NSString* STATIC_EDITORS_CHOICE = @"想看什麼不會自己寫喔?!";
 
 #pragma mark - Map delegates and methods
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    static NSString *reuseId = @"pin";
+    MKPinAnnotationView *pav = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
+    if (pav == nil)
+    {
+        pav = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
+        pav.draggable = YES;
+        pav.canShowCallout = YES;
+    }
+    else
+    {
+        pav.draggable = YES;
+        pav.annotation = annotation;
+    }
+    
+    pav.animatesDrop = YES;
+    pav.selected = YES;
+    return pav;
+}
+
 - (void)locationEditor
 {
     CLLocationCoordinate2D location = CLLocationCoordinate2DMake([STATIC_LOCATION_LATITUDE floatValue], [STATIC_LOCATION_LONGITUDE floatValue]);
