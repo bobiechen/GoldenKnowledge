@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C31363516BAC56D00D07865 /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C31363316BAC56D00D07865 /* icon_retina.png */; };
+		2C31363616BAC56D00D07865 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C31363416BAC56D00D07865 /* icon.png */; };
 		2C76E74916B510900071D93A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C76E74816B510900071D93A /* UIKit.framework */; };
 		2C76E74B16B510900071D93A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C76E74A16B510900071D93A /* Foundation.framework */; };
 		2C76E74D16B510900071D93A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C76E74C16B510900071D93A /* CoreGraphics.framework */; };
@@ -26,12 +28,19 @@
 		2C76E77916B572D00071D93A /* main_goldenknowledge.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E77416B572D00071D93A /* main_goldenknowledge.png */; };
 		2C76E77A16B572D00071D93A /* main_knowledge_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E77516B572D00071D93A /* main_knowledge_textfield.png */; };
 		2C76E77C16B57EC40071D93A /* main_jameslin.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E77B16B57EC40071D93A /* main_jameslin.png */; };
+		2C76E78316B6CBFF0071D93A /* KnowledgeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C76E78216B6CBFF0071D93A /* KnowledgeTableViewController.m */; };
+		2C76E78616B6D4E50071D93A /* 43-film-roll.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C76E78516B6D4E50071D93A /* 43-film-roll.png */; };
+		2C76E78916B811C90071D93A /* KnowledgeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C76E78816B811C90071D93A /* KnowledgeDetailViewController.m */; };
+		2CECADC816B97D3400580598 /* main_btn_editortracking_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CECADC616B97D3400580598 /* main_btn_editortracking_pressed.png */; };
+		2CECADC916B97D3400580598 /* main_btn_knowledgelist_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CECADC716B97D3400580598 /* main_btn_knowledgelist_pressed.png */; };
 		808130C116B6189400B1C641 /* WheresEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808130C016B6189400B1C641 /* WheresEditorViewController.m */; };
 		808130C416B61BC900B1C641 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808130C316B61BC900B1C641 /* MapKit.framework */; };
 		808130C616B6249D00B1C641 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808130C516B6249D00B1C641 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C31363316BAC56D00D07865 /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
+		2C31363416BAC56D00D07865 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		2C76E74416B510900071D93A /* GoldenKnowledge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldenKnowledge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C76E74816B510900071D93A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2C76E74A16B510900071D93A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,6 +65,13 @@
 		2C76E77416B572D00071D93A /* main_goldenknowledge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_goldenknowledge.png; sourceTree = "<group>"; };
 		2C76E77516B572D00071D93A /* main_knowledge_textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_knowledge_textfield.png; sourceTree = "<group>"; };
 		2C76E77B16B57EC40071D93A /* main_jameslin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_jameslin.png; sourceTree = "<group>"; };
+		2C76E78116B6CBFF0071D93A /* KnowledgeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeTableViewController.h; sourceTree = "<group>"; };
+		2C76E78216B6CBFF0071D93A /* KnowledgeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeTableViewController.m; sourceTree = "<group>"; };
+		2C76E78516B6D4E50071D93A /* 43-film-roll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "43-film-roll.png"; sourceTree = "<group>"; };
+		2C76E78716B811C90071D93A /* KnowledgeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeDetailViewController.h; sourceTree = "<group>"; };
+		2C76E78816B811C90071D93A /* KnowledgeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeDetailViewController.m; sourceTree = "<group>"; };
+		2CECADC616B97D3400580598 /* main_btn_editortracking_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_btn_editortracking_pressed.png; sourceTree = "<group>"; };
+		2CECADC716B97D3400580598 /* main_btn_knowledgelist_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_btn_knowledgelist_pressed.png; sourceTree = "<group>"; };
 		808130BF16B6189400B1C641 /* WheresEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WheresEditorViewController.h; sourceTree = "<group>"; };
 		808130C016B6189400B1C641 /* WheresEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WheresEditorViewController.m; sourceTree = "<group>"; };
 		808130C316B61BC900B1C641 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -116,6 +132,10 @@
 				2C76E76016B510900071D93A /* MainStoryboard_iPhone.storyboard */,
 				2C76E76616B510900071D93A /* MainViewController.h */,
 				2C76E76716B510900071D93A /* MainViewController.m */,
+				2C76E78116B6CBFF0071D93A /* KnowledgeTableViewController.h */,
+				2C76E78216B6CBFF0071D93A /* KnowledgeTableViewController.m */,
+				2C76E78716B811C90071D93A /* KnowledgeDetailViewController.h */,
+				2C76E78816B811C90071D93A /* KnowledgeDetailViewController.m */,
 				808130BF16B6189400B1C641 /* WheresEditorViewController.h */,
 				808130C016B6189400B1C641 /* WheresEditorViewController.m */,
 				2C76E76316B510900071D93A /* MainStoryboard_iPad.storyboard */,
@@ -141,6 +161,11 @@
 		2C76E76E16B5642A0071D93A /* images & icons */ = {
 			isa = PBXGroup;
 			children = (
+				2C31363316BAC56D00D07865 /* icon_retina.png */,
+				2C31363416BAC56D00D07865 /* icon.png */,
+				2CECADC616B97D3400580598 /* main_btn_editortracking_pressed.png */,
+				2CECADC716B97D3400580598 /* main_btn_knowledgelist_pressed.png */,
+				2C76E78516B6D4E50071D93A /* 43-film-roll.png */,
 				2C76E77B16B57EC40071D93A /* main_jameslin.png */,
 				2C76E77116B572D00071D93A /* main_btn_editortracking.png */,
 				2C76E77216B572D00071D93A /* main_btn_knowledgelist.png */,
@@ -216,6 +241,11 @@
 				2C76E77916B572D00071D93A /* main_goldenknowledge.png in Resources */,
 				2C76E77A16B572D00071D93A /* main_knowledge_textfield.png in Resources */,
 				2C76E77C16B57EC40071D93A /* main_jameslin.png in Resources */,
+				2C76E78616B6D4E50071D93A /* 43-film-roll.png in Resources */,
+				2CECADC816B97D3400580598 /* main_btn_editortracking_pressed.png in Resources */,
+				2CECADC916B97D3400580598 /* main_btn_knowledgelist_pressed.png in Resources */,
+				2C31363516BAC56D00D07865 /* icon_retina.png in Resources */,
+				2C31363616BAC56D00D07865 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +260,8 @@
 				2C76E75916B510900071D93A /* AppDelegate.m in Sources */,
 				2C76E76816B510900071D93A /* MainViewController.m in Sources */,
 				808130C116B6189400B1C641 /* WheresEditorViewController.m in Sources */,
+				2C76E78316B6CBFF0071D93A /* KnowledgeTableViewController.m in Sources */,
+				2C76E78916B811C90071D93A /* KnowledgeDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +303,8 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ying Chi Chen (N2366DQNJQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ying Chi Chen (N2366DQNJQ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -286,6 +319,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "432B491E-0E6C-4163-B877-EA0F0B7D264C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "432B491E-0E6C-4163-B877-EA0F0B7D264C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -299,7 +334,8 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ying Chi Chen (N2366DQNJQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ying Chi Chen (N2366DQNJQ)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -307,6 +343,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "432B491E-0E6C-4163-B877-EA0F0B7D264C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "432B491E-0E6C-4163-B877-EA0F0B7D264C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
