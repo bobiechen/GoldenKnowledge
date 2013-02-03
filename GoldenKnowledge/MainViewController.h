@@ -13,6 +13,7 @@
 - (void)backToMain;
 
 @property (retain, nonatomic) IBOutlet UIImageView *viewBackground;
+@property (retain, nonatomic) IBOutlet UIImageView *imageEditor;
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollKnowledge;
 @property (retain, nonatomic) IBOutlet UIButton *btnWheresEditor;
 @property (retain, nonatomic) IBOutlet UIButton *btnKnowledgeList;

@@ -39,6 +39,7 @@
     [_btnWheresEditor release];
     [_btnKnowledgeList release];
     [_scrollKnowledge release];
+    [_imageEditor release];
     [super dealloc];
 }
 
@@ -76,6 +77,12 @@
     self.scrollKnowledge.contentSize = CGSizeMake(self.scrollKnowledge.frame.size.width, self.scrollKnowledge.frame.size.height*[colors count]);
 }
 
+- (void)prepareEditorAvatar
+{
+    UIImage* image = [UIImage imageNamed:@"main_jameslin.png"];
+    self.imageEditor.image = image;
+}
+
 - (void)prepareButtons
 {
     UIImage* imageWheresEditorPressed = [UIImage imageNamed:@"main_btn_editortracking.png"];
@@ -95,6 +102,7 @@
     [self setBtnWheresEditor:nil];
     [self setBtnKnowledgeList:nil];
     [self setScrollKnowledge:nil];
+    [self setImageEditor:nil];
     [super viewDidUnload];
 }
 @end
