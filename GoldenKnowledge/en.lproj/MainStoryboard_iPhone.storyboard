@@ -329,6 +329,7 @@
             <relationships>
                 <relationship kind="action" name="backToMain:"/>
                 <relationship kind="outlet" name="indicatorLoading" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="viewLoading" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="MainViewController" superclassName="UIViewController">
