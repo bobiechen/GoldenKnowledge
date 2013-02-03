@@ -66,13 +66,14 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
         {
             if (data)
             {
-                int dummy = 1;
                 UIImage* image = [[UIImage alloc] initWithData:data];
                 m_imageKnowledgePicture.image = image;
-                dummy = 2;
+                [image release];
             }
         }
     }];
+    
+    [queue release];
 }
 
 - (void)viewDidUnload {
