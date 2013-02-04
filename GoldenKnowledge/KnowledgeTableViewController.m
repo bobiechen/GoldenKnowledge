@@ -8,6 +8,7 @@
 
 #import "KnowledgeTableViewController.h"
 #import "MainViewController.h"
+#import "KnowledgeDetailViewController.h"
 
 const NSString* JSON_SITE_BASEURL =             @"http://zootheband.com/home/?json=";
 const NSString* JSON_API_GET_CATEGORY_POSTS =   @"get_category_posts=3";    // GoldenKnowledge category id: 3
@@ -143,12 +144,14 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
 {
     // Navigation logic may go here. Create and push another view controller.
     /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    KnowledgeDetailViewController* detailViewController = [[KnowledgeDetailViewController alloc]
+                                                           initWithNibName:@"KnowledgeDetailViewController" bundle:nil];
+    
+    // ...
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+    //*/
 }
 
 - (void)fetchKnowledgePosts
@@ -186,8 +189,9 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
                     for (NSDictionary* post in dictPosts)
                     {
                         NSArray* arrayValues = @[ [post objectForKey:@"id"], [post objectForKey:@"title"],
-                                                    [post objectForKey:@"title_plain"], [post objectForKey:@"date"] ];
-                        NSArray* arrayKeys = @[ @"id", @"title", @"title_plain", @"date" ];
+                                                    [post objectForKey:@"title_plain"], [post objectForKey:@"date"],
+                                                    [post objectForKey:@"excerpt"] ];
+                        NSArray* arrayKeys = @[ @"id", @"title", @"title_plain", @"date", @"excerpt" ];
                         NSDictionary* dictKnowledge = [NSDictionary dictionaryWithObjects:arrayValues forKeys:arrayKeys];
                         
                         [m_arrayKnowledgePosts addObject:dictKnowledge];
@@ -199,6 +203,24 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
         }];
     
     [queue release];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueIdKnowledgeDetail"])
+    {
+        KnowledgeDetailViewController* knowledgeDetailViewController = segue.destinationViewController;
+        
+        // Pass the detailed data to KnowledgeDetailViewController
+        NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
+        NSDictionary* dictKnowledge = [m_arrayKnowledgePosts objectAtIndex:indexPath.row];
+        
+        NSArray* arrayValue = @[ [dictKnowledge objectForKey:@"date"], [dictKnowledge objectForKey:@"excerpt"] ];
+        NSArray* arrayKey = @[ @"date", @"excerpt" ];
+        NSDictionary* dictKnowledgeDetails = [NSDictionary dictionaryWithObjects:arrayValue forKeys:arrayKey];
+        
+        [knowledgeDetailViewController prepareKnowledge:dictKnowledgeDetails];
+    }
 }
 
 - (void)showFirstTimeLoadingView
