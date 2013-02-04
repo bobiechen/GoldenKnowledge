@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -146,7 +146,7 @@
                                     <rect key="frame" x="112" y="48" width="97" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -178,7 +178,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="yTZ-FB-f9h" kind="push" id="NTS-w6-6I7"/>
+                                    <segue destination="yTZ-FB-f9h" kind="push" identifier="segueIdKnowledgeDetail" id="NTS-w6-6I7"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CellNoPost" textLabel="AN1-gk-pWa" style="IBUITableViewCellStyleDefault" id="Uej-uM-heb">
@@ -230,7 +230,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="AlQ-S7-XHm">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" id="AlQ-S7-XHm">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -249,15 +249,15 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="你知道嗎? 如果你住在這邊，報地址的時候會發生什麼事呢?" id="LO0-oc-WjO">
-                                                <rect key="frame" x="20" y="43" width="240" height="75"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="LO0-oc-WjO">
+                                                <rect key="frame" x="20" y="43" width="240" height="143"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="星期五 下午12:40" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q4y-FI-Gib">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q4y-FI-Gib">
                                                 <rect key="frame" x="163" y="14" width="169" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -265,7 +265,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="eL1-eM-qfL">
-                                                <rect key="frame" x="20" y="136" width="240" height="137"/>
+                                                <rect key="frame" x="20" y="208" width="240" height="137"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </imageView>
@@ -281,6 +281,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="m_imageKnowledgePicture" destination="eL1-eM-qfL" id="WWW-z8-Qvr"/>
+                        <outlet property="m_labelDate" destination="q4y-FI-Gib" id="kee-WB-AWI"/>
+                        <outlet property="m_textKnowledgeContent" destination="LO0-oc-WjO" id="SJI-5o-RAc"/>
+                        <outlet property="m_viewKnowledge" destination="Y42-rS-mjR" id="h7B-Vb-aLQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVO-27-u5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,6 +325,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/KnowledgeDetailViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="m_imageKnowledgePicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="m_labelDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="m_textKnowledgeContent" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="m_viewKnowledge" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="KnowledgeTableViewController" superclassName="UITableViewController">
