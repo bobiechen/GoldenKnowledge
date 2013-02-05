@@ -10,6 +10,7 @@
 
 @interface KnowledgeDetailViewController : UIViewController {
     IBOutlet UIImageView *m_imageKnowledgePicture;
+    IBOutlet UIScrollView *m_scrollView;
     IBOutlet UIView *m_viewKnowledge;
     IBOutlet UILabel *m_labelDate;
     IBOutlet UITextView *m_textKnowledgeContent;

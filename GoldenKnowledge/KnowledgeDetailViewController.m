@@ -45,6 +45,7 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
     [m_textKnowledgeContent release];
     [m_labelDate release];
     [m_viewKnowledge release];
+    [m_scrollView release];
     [super dealloc];
 }
 
@@ -73,13 +74,21 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
     m_textKnowledgeContent.frame = frame;
     
     if (!m_viewKnowledge)
-        m_viewKnowledge = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 600)];
+        m_viewKnowledge = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 300, 600)];
     
     [m_viewKnowledge addSubview:m_textKnowledgeContent];
     
     CGRect frame2 = m_viewKnowledge.frame;
     frame2.size.height = m_textKnowledgeContent.frame.origin.y + m_textKnowledgeContent.frame.size.height;
     m_viewKnowledge.frame = frame2;
+    
+    if (!m_scrollView)
+        m_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 800)];
+    
+    [m_scrollView addSubview:m_viewKnowledge];
+    CGSize size = m_scrollView.contentSize;
+    size.height = m_viewKnowledge.frame.origin.y + m_viewKnowledge.frame.size.height;
+    m_scrollView.contentSize = size;
     
     [self retrieveKnowledgePic];
 }
@@ -123,6 +132,8 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
     m_labelDate = nil;
     [m_viewKnowledge release];
     m_viewKnowledge = nil;
+    [m_scrollView release];
+    m_scrollView = nil;
     [super viewDidUnload];
 }
 @end
