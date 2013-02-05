@@ -54,7 +54,7 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
     if (dictKnowledge)
     {
         self.strDate = [dictKnowledge objectForKey:@"date"];
-        self.strContent = [dictKnowledge objectForKey:@"excerpt"];
+        self.strContent = [dictKnowledge objectForKey:@"content"];
     }
 }
 
@@ -67,10 +67,11 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
         m_textKnowledgeContent = [[UITextView alloc] initWithFrame:CGRectMake(20, 45, 240, 75)];
     
     m_labelDate.text = [self.strDate substringWithRange:NSMakeRange(0, 10)];
-    m_textKnowledgeContent.text = self.strContent;
+    m_textKnowledgeContent.text = [self htmlFlatten:self.strContent];
     m_textKnowledgeContent.textColor = [UIColor blackColor];
     CGRect frame = m_textKnowledgeContent.frame;
     frame.size.height = m_textKnowledgeContent.contentSize.height;
+    frame.origin.y = 45;
     m_textKnowledgeContent.frame = frame;
     
     if (!m_viewKnowledge)
@@ -87,16 +88,42 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
     
     [m_scrollView addSubview:m_viewKnowledge];
     CGSize size = m_scrollView.contentSize;
-    size.height = m_viewKnowledge.frame.origin.y + m_viewKnowledge.frame.size.height;
+    size.height = m_viewKnowledge.frame.origin.y + m_viewKnowledge.frame.size.height + 10;
     m_scrollView.contentSize = size;
     
-    [self retrieveKnowledgePic];
+    [self performSelector:@selector(retrieveKnowledgePic) withObject:nil afterDelay:1.0];
+}
+
+- (NSString*)htmlFlatten:(NSString*)html
+{
+    NSScanner* scanner;
+    NSString* tag = nil;
+    scanner = [NSScanner scannerWithString:html];
+    
+    while (![scanner isAtEnd]) {
+        [scanner scanUpToString:@"<" intoString:nil];
+        [scanner scanUpToString:@">" intoString:&tag];
+        
+        if ([tag isEqualToString:@"</p"])
+            html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", tag] withString:@"\n"];
+        else if ([tag isEqualToString:@"<br /"])
+            html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", tag] withString:@"\n"];
+        else
+            html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", tag] withString:@""];
+    }
+    
+    return html;
 }
 
 - (void)retrieveKnowledgePic
 {
     // If editor does not provide pic-url for the knowledge, just return
     //return;
+    
+    if (!m_imageKnowledgePicture)
+        m_imageKnowledgePicture = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    
+    [m_viewKnowledge addSubview:m_imageKnowledgePicture];
     
     NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:KNOWLEDGE_PIC_URL]];
     NSOperationQueue* queue = [[NSOperationQueue alloc] init];
@@ -113,9 +140,42 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
         {
             if (data)
             {
+                int nKnowledgePageTopMargin = 45;
+                
                 UIImage* image = [[UIImage alloc] initWithData:data];
                 m_imageKnowledgePicture.image = image;
                 [image release];
+                
+                // Rearrange text-view position, container-view frame and scroll-view frame
+                CGRect frame = m_imageKnowledgePicture.frame;
+                frame.origin.y = nKnowledgePageTopMargin;
+                
+                if (m_imageKnowledgePicture.image.size.width >= 260)
+                {
+                    float fWidth = 260;
+                    float fHeight = 260 * m_imageKnowledgePicture.image.size.height / m_imageKnowledgePicture.image.size.width;
+                    frame.size = CGSizeMake(fWidth, fHeight);
+                }
+                else
+                {
+                    frame.size = m_imageKnowledgePicture.image.size;
+                    frame.origin.x = (320 - m_imageKnowledgePicture.image.size.width) / 2;
+                }
+                
+                m_imageKnowledgePicture.frame = frame;
+                [m_viewKnowledge addSubview:m_imageKnowledgePicture];
+                
+                CGRect frame2 = m_textKnowledgeContent.frame;
+                frame2.origin.y = nKnowledgePageTopMargin + m_imageKnowledgePicture.frame.size.height;
+                m_textKnowledgeContent.frame = frame2;
+                
+                CGRect frame3 = m_viewKnowledge.frame;
+                frame3.size.height = m_textKnowledgeContent.frame.origin.y + m_textKnowledgeContent.frame.size.height;
+                m_viewKnowledge.frame = frame3;
+                
+                CGSize size = m_scrollView.contentSize;
+                size.height = m_viewKnowledge.frame.origin.y + m_viewKnowledge.frame.size.height + 10;
+                m_scrollView.contentSize = size;
             }
         }
     }];
