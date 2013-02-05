@@ -190,8 +190,8 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
                     {
                         NSArray* arrayValues = @[ [post objectForKey:@"id"], [post objectForKey:@"title"],
                                                     [post objectForKey:@"title_plain"], [post objectForKey:@"date"],
-                                                    [post objectForKey:@"excerpt"] ];
-                        NSArray* arrayKeys = @[ @"id", @"title", @"title_plain", @"date", @"excerpt" ];
+                                                    [post objectForKey:@"content"] ];
+                        NSArray* arrayKeys = @[ @"id", @"title", @"title_plain", @"date", @"content" ];
                         NSDictionary* dictKnowledge = [NSDictionary dictionaryWithObjects:arrayValues forKeys:arrayKeys];
                         
                         [m_arrayKnowledgePosts addObject:dictKnowledge];
@@ -215,8 +215,8 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
         NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
         NSDictionary* dictKnowledge = [m_arrayKnowledgePosts objectAtIndex:indexPath.row];
         
-        NSArray* arrayValue = @[ [dictKnowledge objectForKey:@"date"], [dictKnowledge objectForKey:@"excerpt"] ];
-        NSArray* arrayKey = @[ @"date", @"excerpt" ];
+        NSArray* arrayValue = @[ [dictKnowledge objectForKey:@"date"], [dictKnowledge objectForKey:@"content"] ];
+        NSArray* arrayKey = @[ @"date", @"content" ];
         NSDictionary* dictKnowledgeDetails = [NSDictionary dictionaryWithObjects:arrayValue forKeys:arrayKey];
         
         [knowledgeDetailViewController prepareKnowledge:dictKnowledgeDetails];
