@@ -14,6 +14,7 @@
     IBOutlet UIView *m_viewKnowledge;
     IBOutlet UILabel *m_labelDate;
     IBOutlet UITextView *m_textKnowledgeContent;
+    NSString* m_strKnowledgePicURL;
 }
 
 // Properties

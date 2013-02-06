@@ -91,7 +91,7 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
     size.height = m_viewKnowledge.frame.origin.y + m_viewKnowledge.frame.size.height + 10;
     m_scrollView.contentSize = size;
     
-    [self performSelector:@selector(retrieveKnowledgePic) withObject:nil afterDelay:1.0];
+    [self retrieveKnowledgePic];
 }
 
 - (NSString*)htmlFlatten:(NSString*)html
@@ -100,11 +100,22 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
     NSString* tag = nil;
     scanner = [NSScanner scannerWithString:html];
     
+    m_strKnowledgePicURL = @"";
+    
     while (![scanner isAtEnd]) {
         [scanner scanUpToString:@"<" intoString:nil];
         [scanner scanUpToString:@">" intoString:&tag];
         
-        if ([tag isEqualToString:@"</p"])
+        if ([tag isEqualToString:@"<knowledge_pic"])
+        {
+            [scanner scanUpToString:@"h" intoString:nil];  // "h" for "http" of the pic URL
+            html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", tag] withString:@""];
+            [scanner scanUpToString:@"</" intoString:&m_strKnowledgePicURL];
+            html = [html stringByReplacingOccurrencesOfString:m_strKnowledgePicURL withString:@""];
+            [scanner scanUpToString:@">" intoString:&tag];
+            html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", tag] withString:@""];
+        }
+        else if ([tag isEqualToString:@"</p"])
             html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", tag] withString:@"\n"];
         else if ([tag isEqualToString:@"<br /"])
             html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", tag] withString:@"\n"];
@@ -115,17 +126,53 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
     return html;
 }
 
+- (void)rearrangeKnowledgeViewAfterPicLoaded
+{
+    int nKnowledgePageTopMargin = 45;
+    
+    CGRect frame = m_imageKnowledgePicture.frame;
+    frame.origin.y = nKnowledgePageTopMargin;
+    
+    if (m_imageKnowledgePicture.image.size.width >= 260)
+    {
+        float fWidth = 260;
+        float fHeight = 260 * m_imageKnowledgePicture.image.size.height / m_imageKnowledgePicture.image.size.width;
+        frame.size = CGSizeMake(fWidth, fHeight);
+    }
+    else
+    {
+        frame.size = m_imageKnowledgePicture.image.size;
+        frame.origin.x = (320 - m_imageKnowledgePicture.image.size.width) / 2;
+    }
+    
+    m_imageKnowledgePicture.frame = frame;
+    [m_viewKnowledge addSubview:m_imageKnowledgePicture];
+    
+    CGRect frame2 = m_textKnowledgeContent.frame;
+    frame2.origin.y = nKnowledgePageTopMargin + m_imageKnowledgePicture.frame.size.height;
+    m_textKnowledgeContent.frame = frame2;
+    
+    CGRect frame3 = m_viewKnowledge.frame;
+    frame3.size.height = m_textKnowledgeContent.frame.origin.y + m_textKnowledgeContent.frame.size.height;
+    m_viewKnowledge.frame = frame3;
+    
+    CGSize size = m_scrollView.contentSize;
+    size.height = m_viewKnowledge.frame.origin.y + m_viewKnowledge.frame.size.height + 10;
+    m_scrollView.contentSize = size;
+}
+
 - (void)retrieveKnowledgePic
 {
     // If editor does not provide pic-url for the knowledge, just return
-    //return;
+    if ([m_strKnowledgePicURL isEqualToString:@""])
+        return;
     
     if (!m_imageKnowledgePicture)
         m_imageKnowledgePicture = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     
     [m_viewKnowledge addSubview:m_imageKnowledgePicture];
     
-    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:KNOWLEDGE_PIC_URL]];
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:m_strKnowledgePicURL]];
     NSOperationQueue* queue = [[NSOperationQueue alloc] init];
     
     [NSURLConnection sendAsynchronousRequest:request
@@ -140,42 +187,16 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
         {
             if (data)
             {
-                int nKnowledgePageTopMargin = 45;
-                
                 UIImage* image = [[UIImage alloc] initWithData:data];
                 m_imageKnowledgePicture.image = image;
                 [image release];
                 
                 // Rearrange text-view position, container-view frame and scroll-view frame
-                CGRect frame = m_imageKnowledgePicture.frame;
-                frame.origin.y = nKnowledgePageTopMargin;
-                
-                if (m_imageKnowledgePicture.image.size.width >= 260)
-                {
-                    float fWidth = 260;
-                    float fHeight = 260 * m_imageKnowledgePicture.image.size.height / m_imageKnowledgePicture.image.size.width;
-                    frame.size = CGSizeMake(fWidth, fHeight);
-                }
-                else
-                {
-                    frame.size = m_imageKnowledgePicture.image.size;
-                    frame.origin.x = (320 - m_imageKnowledgePicture.image.size.width) / 2;
-                }
-                
-                m_imageKnowledgePicture.frame = frame;
-                [m_viewKnowledge addSubview:m_imageKnowledgePicture];
-                
-                CGRect frame2 = m_textKnowledgeContent.frame;
-                frame2.origin.y = nKnowledgePageTopMargin + m_imageKnowledgePicture.frame.size.height;
-                m_textKnowledgeContent.frame = frame2;
-                
-                CGRect frame3 = m_viewKnowledge.frame;
-                frame3.size.height = m_textKnowledgeContent.frame.origin.y + m_textKnowledgeContent.frame.size.height;
-                m_viewKnowledge.frame = frame3;
-                
-                CGSize size = m_scrollView.contentSize;
-                size.height = m_viewKnowledge.frame.origin.y + m_viewKnowledge.frame.size.height + 10;
-                m_scrollView.contentSize = size;
+                //
+                // Important!! access UI elements like assigning size or frame, should be done in main thread
+                // Else app will crash
+                //
+                [self performSelectorOnMainThread:@selector(rearrangeKnowledgeViewAfterPicLoaded) withObject:nil waitUntilDone:NO];
             }
         }
     }];
