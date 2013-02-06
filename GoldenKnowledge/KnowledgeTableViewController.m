@@ -198,7 +198,7 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
                     }
                 }
                 
-                [self fetchComplete];
+                [self performSelectorOnMainThread:@selector(fetchComplete) withObject:nil waitUntilDone:NO];
             }
         }];
     
