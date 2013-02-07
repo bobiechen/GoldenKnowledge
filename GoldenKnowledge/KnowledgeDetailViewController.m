@@ -31,6 +31,7 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    m_scrollView.delegate = self;
     [self performSelector:@selector(loadKnowledge) withObject:nil afterDelay:0.5];
 }
 
@@ -217,4 +218,12 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
     m_scrollView = nil;
     [super viewDidUnload];
 }
+
+#pragma mark - UIScrollView delegate
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    targetContentOffset->y = 100;
+}
+
 @end

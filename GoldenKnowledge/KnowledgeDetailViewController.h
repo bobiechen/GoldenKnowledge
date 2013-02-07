@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KnowledgeDetailViewController : UIViewController {
+@interface KnowledgeDetailViewController : UIViewController <UIScrollViewDelegate> {
     IBOutlet UIImageView *m_imageKnowledgePicture;
     IBOutlet UIScrollView *m_scrollView;
     IBOutlet UIView *m_viewKnowledge;
