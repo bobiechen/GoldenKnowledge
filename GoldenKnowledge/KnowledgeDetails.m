@@ -11,7 +11,7 @@
 
 @implementation KnowledgeDetails
 
-@dynamic id;
+@dynamic post_id;
 @dynamic title;
 @dynamic excerpt;
 
