@@ -15,6 +15,7 @@
     IBOutlet UILabel *m_labelDate;
     IBOutlet UITextView *m_textKnowledgeContent;
     NSString* m_strKnowledgePicURL;
+    int m_nLastScrollOffset;
 }
 
 // Properties

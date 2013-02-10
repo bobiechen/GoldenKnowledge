@@ -9,6 +9,9 @@
 #import "KnowledgeDetailViewController.h"
 
 static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress.com/2011/04/fucking-austria-roadsign1.jpg";
+static int KNOWLEDGE_DETAILVIEW_TOPMARGIN = 65;
+static int KNOWLEDGE_DETAILVIEW_WIDTH = 320;
+static int KNOWLEDGE_DETAILVIEW_SHADOW_HEIGHT = 8;
 
 @interface KnowledgeDetailViewController ()
 
@@ -129,36 +132,44 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
 
 - (void)rearrangeKnowledgeViewAfterPicLoaded
 {
-    int nKnowledgePageTopMargin = 45;
+    //int nKnowledgePageTopMargin = 45;
     
     CGRect frame = m_imageKnowledgePicture.frame;
-    frame.origin.y = nKnowledgePageTopMargin;
+    frame.origin.y = 0;
     
-    if (m_imageKnowledgePicture.image.size.width >= 260)
-    {
-        float fWidth = 260;
-        float fHeight = 260 * m_imageKnowledgePicture.image.size.height / m_imageKnowledgePicture.image.size.width;
-        frame.size = CGSizeMake(fWidth, fHeight);
-    }
-    else
-    {
-        frame.size = m_imageKnowledgePicture.image.size;
-        frame.origin.x = (320 - m_imageKnowledgePicture.image.size.width) / 2;
-    }
+    float fWidth = KNOWLEDGE_DETAILVIEW_WIDTH;
+    float fHeight = KNOWLEDGE_DETAILVIEW_WIDTH * m_imageKnowledgePicture.image.size.height / m_imageKnowledgePicture.image.size.width;
+    frame.size = CGSizeMake(fWidth, fHeight);
     
     m_imageKnowledgePicture.frame = frame;
-    [m_viewKnowledge addSubview:m_imageKnowledgePicture];
+    [m_scrollView addSubview:m_imageKnowledgePicture];
+    
+    UIImageView* imageShadow = [[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                             m_imageKnowledgePicture.frame.size
+                                                                            .height,
+                                                                             KNOWLEDGE_DETAILVIEW_WIDTH,
+                                                                             KNOWLEDGE_DETAILVIEW_SHADOW_HEIGHT)];
+    
+    UIImage* imgShadow = [UIImage imageNamed:@"detail_shadow.png"];
+    imageShadow.image = imgShadow;
+    [imgShadow release];
+    [m_scrollView addSubview:imageShadow];
     
     CGRect frame2 = m_textKnowledgeContent.frame;
-    frame2.origin.y = nKnowledgePageTopMargin + m_imageKnowledgePicture.frame.size.height;
+    frame2.origin.y =  KNOWLEDGE_DETAILVIEW_TOPMARGIN;
     m_textKnowledgeContent.frame = frame2;
     
     CGRect frame3 = m_viewKnowledge.frame;
-    frame3.size.height = m_textKnowledgeContent.frame.origin.y + m_textKnowledgeContent.frame.size.height;
+    frame3.origin.y = m_imageKnowledgePicture.frame.size.height;
+    frame3.size.height = KNOWLEDGE_DETAILVIEW_TOPMARGIN + m_textKnowledgeContent.frame.size.height;
     m_viewKnowledge.frame = frame3;
+//    UIImageView* viewBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_background.png"]];
+//    [m_viewKnowledge addSubview:viewBackground];
+//    [m_viewKnowledge sendSubviewToBack:viewBackground];
+//    [viewBackground release];
     
     CGSize size = m_scrollView.contentSize;
-    size.height = m_viewKnowledge.frame.origin.y + m_viewKnowledge.frame.size.height + 10;
+    size.height = m_imageKnowledgePicture.frame.size.height + m_viewKnowledge.frame.size.height;
     m_scrollView.contentSize = size;
 }
 
@@ -221,9 +232,35 @@ static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress
 
 #pragma mark - UIScrollView delegate
 
+/*
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 {
-    targetContentOffset->y = 100;
+    //(KNOWLEDGE_DETAILVIEW_TOPMARGIN + m_imageKnowledgePicture.frame.size.height)
+    if (targetContentOffset->y > m_nLastScrollOffset)
+    {
+        // Try to scroll down
+        NSLog(@"scrolling down");
+        
+        if (m_nLastScrollOffset == (KNOWLEDGE_DETAILVIEW_TOPMARGIN + m_imageKnowledgePicture.frame.size.height))
+        {
+            // Let it scroll
+            NSLog(@"Let it scroll");
+        }
+        else
+        {
+            targetContentOffset->y = KNOWLEDGE_DETAILVIEW_TOPMARGIN + m_imageKnowledgePicture.frame.size.height;
+        }
+    }
+    else
+    {
+        // Try to scroll up
+        NSLog(@"scrolling up");
+        targetContentOffset->y = 0;
+    }
+    
+    //m_nLastScrollOffset = scrollView.contentOffset.y;
+    m_nLastScrollOffset = targetContentOffset->y;
+    NSLog(@"end dragging, velocity: %f", velocity.y);
 }
-
+//*/
 @end
