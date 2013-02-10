@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C09C77716C7F539008AF1A7 /* detail_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C09C77616C7F539008AF1A7 /* detail_shadow.png */; };
+		2C09C77916C801BD008AF1A7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C09C77816C801BC008AF1A7 /* CoreData.framework */; };
+		2C09C77C16C804C8008AF1A7 /* KnowledgeDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C09C77A16C804C8008AF1A7 /* KnowledgeDB.xcdatamodeld */; };
+		2C09C77F16C80624008AF1A7 /* KnowledgeDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C09C77E16C80624008AF1A7 /* KnowledgeDetails.m */; };
 		2C31363516BAC56D00D07865 /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C31363316BAC56D00D07865 /* icon_retina.png */; };
 		2C31363616BAC56D00D07865 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C31363416BAC56D00D07865 /* icon.png */; };
 		2C76E74916B510900071D93A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C76E74816B510900071D93A /* UIKit.framework */; };
@@ -39,6 +43,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C09C77616C7F539008AF1A7 /* detail_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detail_shadow.png; sourceTree = "<group>"; };
+		2C09C77816C801BC008AF1A7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2C09C77B16C804C8008AF1A7 /* KnowledgeDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KnowledgeDB.xcdatamodel; sourceTree = "<group>"; };
+		2C09C77D16C80624008AF1A7 /* KnowledgeDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeDetails.h; sourceTree = "<group>"; };
+		2C09C77E16C80624008AF1A7 /* KnowledgeDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeDetails.m; sourceTree = "<group>"; };
 		2C31363316BAC56D00D07865 /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
 		2C31363416BAC56D00D07865 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		2C76E74416B510900071D93A /* GoldenKnowledge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldenKnowledge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C09C77916C801BD008AF1A7 /* CoreData.framework in Frameworks */,
 				808130C616B6249D00B1C641 /* CoreLocation.framework in Frameworks */,
 				808130C416B61BC900B1C641 /* MapKit.framework in Frameworks */,
 				2C76E74916B510900071D93A /* UIKit.framework in Frameworks */,
@@ -115,6 +125,7 @@
 		2C76E74716B510900071D93A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C09C77816C801BC008AF1A7 /* CoreData.framework */,
 				808130C516B6249D00B1C641 /* CoreLocation.framework */,
 				808130C316B61BC900B1C641 /* MapKit.framework */,
 				2C76E74816B510900071D93A /* UIKit.framework */,
@@ -140,6 +151,9 @@
 				808130C016B6189400B1C641 /* WheresEditorViewController.m */,
 				2C76E76316B510900071D93A /* MainStoryboard_iPad.storyboard */,
 				2C76E74F16B510900071D93A /* Supporting Files */,
+				2C09C77A16C804C8008AF1A7 /* KnowledgeDB.xcdatamodeld */,
+				2C09C77D16C80624008AF1A7 /* KnowledgeDetails.h */,
+				2C09C77E16C80624008AF1A7 /* KnowledgeDetails.m */,
 			);
 			path = GoldenKnowledge;
 			sourceTree = "<group>";
@@ -161,6 +175,7 @@
 		2C76E76E16B5642A0071D93A /* images & icons */ = {
 			isa = PBXGroup;
 			children = (
+				2C09C77616C7F539008AF1A7 /* detail_shadow.png */,
 				2C31363316BAC56D00D07865 /* icon_retina.png */,
 				2C31363416BAC56D00D07865 /* icon.png */,
 				2CECADC616B97D3400580598 /* main_btn_editortracking_pressed.png */,
@@ -246,6 +261,7 @@
 				2CECADC916B97D3400580598 /* main_btn_knowledgelist_pressed.png in Resources */,
 				2C31363516BAC56D00D07865 /* icon_retina.png in Resources */,
 				2C31363616BAC56D00D07865 /* icon.png in Resources */,
+				2C09C77716C7F539008AF1A7 /* detail_shadow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +278,8 @@
 				808130C116B6189400B1C641 /* WheresEditorViewController.m in Sources */,
 				2C76E78316B6CBFF0071D93A /* KnowledgeTableViewController.m in Sources */,
 				2C76E78916B811C90071D93A /* KnowledgeDetailViewController.m in Sources */,
+				2C09C77C16C804C8008AF1A7 /* KnowledgeDB.xcdatamodeld in Sources */,
+				2C09C77F16C80624008AF1A7 /* KnowledgeDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +415,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2C09C77A16C804C8008AF1A7 /* KnowledgeDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2C09C77B16C804C8008AF1A7 /* KnowledgeDB.xcdatamodel */,
+			);
+			currentVersion = 2C09C77B16C804C8008AF1A7 /* KnowledgeDB.xcdatamodel */;
+			path = KnowledgeDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2C76E73B16B510900071D93A /* Project object */;
 }
