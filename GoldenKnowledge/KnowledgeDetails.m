@@ -1,0 +1,18 @@
+//
+//  KnowledgeDetails.m
+//  GoldenKnowledge
+//
+//  Created by BobieAir on 13/2/11.
+//  Copyright (c) 2013年 BobieAir. All rights reserved.
+//
+
+#import "KnowledgeDetails.h"
+
+
+@implementation KnowledgeDetails
+
+@dynamic id;
+@dynamic title;
+@dynamic excerpt;
+
+@end
