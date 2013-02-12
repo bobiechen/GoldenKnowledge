@@ -14,9 +14,5 @@
 
 @property (nonatomic, assign) MainViewController* parentMainViewController;
 
-@property (retain, nonatomic) IBOutlet UIView *viewLoading;
-@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *indicatorLoading;
-
-
 - (IBAction)backToMain:(id)sender;
 @end
