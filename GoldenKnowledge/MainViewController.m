@@ -69,7 +69,12 @@
         frame.size = self.scrollKnowledge.frame.size;
         
         UIView* subview = [[UIView alloc] initWithFrame:frame];
-        subview.backgroundColor = [colors objectAtIndex:i];
+        UILabel* labelText = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 170, 22)];
+        labelText.text = @"hahahaha";
+        labelText.backgroundColor = [UIColor clearColor];
+        [subview addSubview:labelText];
+        //subview.backgroundColor = [colors objectAtIndex:i];
+        subview.backgroundColor = [UIColor clearColor];
         [self.scrollKnowledge addSubview:subview];
         [subview release];
     }
