@@ -8,10 +8,9 @@
 
 #import "KnowledgeDetailViewController.h"
 
-static NSString* KNOWLEDGE_PIC_URL = @"http://blogberbagibersama.files.wordpress.com/2011/04/fucking-austria-roadsign1.jpg";
-static int KNOWLEDGE_DETAILVIEW_TOPMARGIN = 65;
+static int KNOWLEDGE_DETAILVIEW_TOPMARGIN = 45;
 static int KNOWLEDGE_DETAILVIEW_WIDTH = 320;
-static int KNOWLEDGE_DETAILVIEW_SHADOW_HEIGHT = 8;
+static int KNOWLEDGE_DETAILVIEW_SHADOW_HEIGHT = 10;
 
 @interface KnowledgeDetailViewController ()
 
@@ -163,10 +162,6 @@ static int KNOWLEDGE_DETAILVIEW_SHADOW_HEIGHT = 8;
     frame3.origin.y = m_imageKnowledgePicture.frame.size.height;
     frame3.size.height = KNOWLEDGE_DETAILVIEW_TOPMARGIN + m_textKnowledgeContent.frame.size.height;
     m_viewKnowledge.frame = frame3;
-//    UIImageView* viewBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_background.png"]];
-//    [m_viewKnowledge addSubview:viewBackground];
-//    [m_viewKnowledge sendSubviewToBack:viewBackground];
-//    [viewBackground release];
     
     CGSize size = m_scrollView.contentSize;
     size.height = m_imageKnowledgePicture.frame.size.height + m_viewKnowledge.frame.size.height;
