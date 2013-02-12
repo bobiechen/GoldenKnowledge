@@ -12,8 +12,10 @@
 
 @interface KnowledgeDetails : NSManagedObject
 
-@property (nonatomic, retain) NSString * post_id;
+@property (nonatomic, retain) NSNumber * post_id;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * excerpt;
+@property (nonatomic, retain) NSString * date;
+@property (nonatomic, retain) NSString * content;
 
 @end

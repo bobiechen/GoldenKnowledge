@@ -14,5 +14,7 @@
 @dynamic post_id;
 @dynamic title;
 @dynamic excerpt;
+@dynamic date;
+@dynamic content;
 
 @end
