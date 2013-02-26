@@ -335,6 +335,21 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
     [self fetchComplete];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"scroll offset: %f", scrollView.contentOffset.y);
+    
+    float fTopBarNavBarHeight = 416.0f;
+    float fCellHeight = 44.0f;
+    float fScrollNearBottomOffset = 22.0f;
+    float fNearBottomPosition = [m_arrayKnowledgePosts count]*fCellHeight - fTopBarNavBarHeight + fScrollNearBottomOffset;
+    
+    if (scrollView.contentOffset.y > fNearBottomPosition)
+    {
+        NSLog(@"Scroll near bottom");
+    }
+}
+
 
 - (void)dealloc {
     [super dealloc];
