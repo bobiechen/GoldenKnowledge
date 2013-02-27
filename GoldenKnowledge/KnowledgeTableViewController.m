@@ -311,6 +311,10 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
     
     UIApplication * sharedApplication = [UIApplication sharedApplication];
     NSFetchRequest* requestFetch = [[NSFetchRequest alloc] init];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+    NSArray* arraySortDesc = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [requestFetch setSortDescriptors:arraySortDesc];
+    [sortDescriptor release];
     NSEntityDescription* entity = [NSEntityDescription entityForName:@"KnowledgeDetails"
                                               inManagedObjectContext:[(AppDelegate*)[sharedApplication delegate] managedObjectContext]];
     [requestFetch setEntity:entity];
@@ -329,6 +333,21 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
     [returnObjs release];
     
     [self fetchComplete];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"scroll offset: %f", scrollView.contentOffset.y);
+    
+    float fTopBarNavBarHeight = 416.0f;
+    float fCellHeight = 44.0f;
+    float fScrollNearBottomOffset = 22.0f;
+    float fNearBottomPosition = [m_arrayKnowledgePosts count]*fCellHeight - fTopBarNavBarHeight + fScrollNearBottomOffset;
+    
+    if (scrollView.contentOffset.y > fNearBottomPosition)
+    {
+        NSLog(@"Scroll near bottom");
+    }
 }
 
 
