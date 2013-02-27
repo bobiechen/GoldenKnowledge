@@ -135,7 +135,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellKnowledgeTitle" textLabel="jSo-hy-IV6" detailTextLabel="vYV-s3-WlL" style="IBUITableViewCellStyleSubtitle" id="9nX-9r-G1z">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellKnowledgeTitle" textLabel="jSo-hy-IV6" detailTextLabel="vYV-s3-WlL" style="IBUITableViewCellStyleSubtitle" id="9nX-9r-G1z">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -163,7 +163,7 @@
                                     <segue destination="yTZ-FB-f9h" kind="push" identifier="segueIdKnowledgeDetail" id="NTS-w6-6I7"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CellLoading" id="TzU-MJ-y4k">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="CellLoading" id="TzU-MJ-y4k">
                                 <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -185,7 +185,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CellNoPost" rowHeight="44" id="Uej-uM-heb">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="CellNoPost" rowHeight="44" id="Uej-uM-heb">
                                 <rect key="frame" x="0.0" y="110" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -301,8 +301,9 @@
             <objects>
                 <navigationController id="eJp-b6-hcz" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YE6-jP-iPx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="YE6-jP-iPx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -326,6 +327,41 @@
         <image name="main_jameslin.png" width="151" height="180"/>
         <image name="main_knowledge_textfield.png" width="451" height="250"/>
     </resources>
+    <classes>
+        <class className="KnowledgeDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/KnowledgeDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="m_imageKnowledgePicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="m_labelDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="m_scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="m_textKnowledgeContent" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="m_viewKnowledge" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="KnowledgeTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/KnowledgeTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToMain:"/>
+            </relationships>
+        </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="btnKnowledgeList" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnWheresEditor" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="imageEditor" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollKnowledge" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="viewBackground" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="WheresEditorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WheresEditorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToMain:"/>
+                <relationship kind="outlet" name="myMapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

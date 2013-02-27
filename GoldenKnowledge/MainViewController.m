@@ -9,6 +9,9 @@
 #import "MainViewController.h"
 #import "KnowledgeTableViewController.h"
 #import "WheresEditorViewController.h"
+#import "AppDelegate.h"
+#import <CoreData/CoreData.h>
+#import "KnowledgeDetails.h"
 
 @interface MainViewController ()
 
@@ -60,26 +63,62 @@
 
 - (void)prepareKnowledgeScrollView
 {
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], nil];
-    for (int i = 0; i < 3; ++i)
+//    NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], nil];
+//    for (int i = 0; i < 3; ++i)
+//    {
+//        CGRect frame;
+//        frame.origin.x = 0;
+//        frame.origin.y = self.scrollKnowledge.frame.size.height * i;
+//        frame.size = self.scrollKnowledge.frame.size;
+//        
+//        UIView* subview = [[UIView alloc] initWithFrame:frame];
+//        UILabel* labelText = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 170, 22)];
+//        labelText.text = @"hahahaha";
+//        labelText.backgroundColor = [UIColor clearColor];
+//        [subview addSubview:labelText];
+//        //subview.backgroundColor = [colors objectAtIndex:i];
+//        subview.backgroundColor = [UIColor clearColor];
+//        [self.scrollKnowledge addSubview:subview];
+//        [subview release];
+//    }
+//    
+//    self.scrollKnowledge.contentSize = CGSizeMake(self.scrollKnowledge.frame.size.width, self.scrollKnowledge.frame.size.height*[colors count]);
+    
+    UIApplication * sharedApplication = [UIApplication sharedApplication];
+    NSFetchRequest* requestFetch = [[NSFetchRequest alloc] init];
+    NSEntityDescription* entity = [NSEntityDescription entityForName:@"KnowledgeDetails"
+                                              inManagedObjectContext:[(AppDelegate*)[sharedApplication delegate] managedObjectContext]];
+    [requestFetch setEntity:entity];
+    NSError* error = nil;
+    NSMutableArray* returnObjs = [[[(AppDelegate*)[sharedApplication delegate] managedObjectContext] executeFetchRequest:requestFetch error:&error] mutableCopy];
+    
+    [requestFetch release];
+    
+    int index = 0;
+    for (KnowledgeDetails* currentKnowledge in returnObjs)
     {
         CGRect frame;
         frame.origin.x = 0;
-        frame.origin.y = self.scrollKnowledge.frame.size.height * i;
+        frame.origin.y = self.scrollKnowledge.frame.size.height * index;
         frame.size = self.scrollKnowledge.frame.size;
         
         UIView* subview = [[UIView alloc] initWithFrame:frame];
-        UILabel* labelText = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 170, 22)];
-        labelText.text = @"hahahaha";
+        UILabel* labelText = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 170, 80)];
+        labelText.lineBreakMode =  NSLineBreakByTruncatingTail;
+        labelText.numberOfLines = 0;
+        labelText.text = currentKnowledge.excerpt;
         labelText.backgroundColor = [UIColor clearColor];
         [subview addSubview:labelText];
-        //subview.backgroundColor = [colors objectAtIndex:i];
         subview.backgroundColor = [UIColor clearColor];
         [self.scrollKnowledge addSubview:subview];
         [subview release];
+        
+        ++index;
     }
     
-    self.scrollKnowledge.contentSize = CGSizeMake(self.scrollKnowledge.frame.size.width, self.scrollKnowledge.frame.size.height*[colors count]);
+    self.scrollKnowledge.contentSize = CGSizeMake(self.scrollKnowledge.frame.size.width, self.scrollKnowledge.frame.size.height*[returnObjs count]);
+    
+    [returnObjs release];
 }
 
 - (void)prepareEditorAvatar

@@ -322,7 +322,7 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
     // update table view
     for (KnowledgeDetails* currentKnowledge in returnObjs)
     {
-        NSLog(@"fetchLayersFromDB, id: %@ title: %@", currentKnowledge.post_id, currentKnowledge.title);
+        //NSLog(@"fetchLayersFromDB, id: %@ title: %@", currentKnowledge.post_id, currentKnowledge.title);
         [m_arrayKnowledgePosts insertObject:currentKnowledge atIndex:0];
     }
     
