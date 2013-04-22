@@ -17,5 +17,6 @@
 @property (nonatomic, retain) NSString * excerpt;
 @property (nonatomic, retain) NSString * date;
 @property (nonatomic, retain) NSString * content;
+@property (nonatomic, retain) NSString * subtitle;
 
 @end
