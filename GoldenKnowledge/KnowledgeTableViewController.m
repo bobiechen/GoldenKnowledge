@@ -314,6 +314,7 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
     NSArray* arraySortDesc = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     [requestFetch setSortDescriptors:arraySortDesc];
+    [arraySortDesc release];
     [sortDescriptor release];
     NSEntityDescription* entity = [NSEntityDescription entityForName:@"KnowledgeDetails"
                                               inManagedObjectContext:[(AppDelegate*)[sharedApplication delegate] managedObjectContext]];

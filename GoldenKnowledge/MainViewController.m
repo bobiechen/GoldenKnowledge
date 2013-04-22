@@ -109,6 +109,7 @@
         labelText.text = currentKnowledge.excerpt;
         labelText.backgroundColor = [UIColor clearColor];
         [subview addSubview:labelText];
+        [labelText release];
         subview.backgroundColor = [UIColor clearColor];
         [self.scrollKnowledge addSubview:subview];
         [subview release];

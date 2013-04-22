@@ -68,7 +68,7 @@ static NSString* STATIC_EDITORS_CHOICE = @"想看什麼不會自己寫喔?!";
     MKPinAnnotationView *pav = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
     if (pav == nil)
     {
-        pav = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
+        pav = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId] autorelease];
         pav.draggable = YES;
         pav.canShowCallout = YES;
     }
@@ -101,6 +101,7 @@ static NSString* STATIC_EDITORS_CHOICE = @"想看什麼不會自己寫喔?!";
     annotatePoint.subtitle = STATIC_EDITORS_CHOICE;
     
     [self.myMapView addAnnotation:annotatePoint];
+    [annotatePoint release];
     [self.myMapView selectAnnotation:annotatePoint animated:YES];
 }
 
