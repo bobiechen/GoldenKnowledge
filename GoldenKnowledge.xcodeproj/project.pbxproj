@@ -142,6 +142,9 @@
 		2C76E74E16B510900071D93A /* GoldenKnowledge */ = {
 			isa = PBXGroup;
 			children = (
+				2C09C77A16C804C8008AF1A7 /* KnowledgeDB.xcdatamodeld */,
+				2C09C77D16C80624008AF1A7 /* KnowledgeDetails.h */,
+				2C09C77E16C80624008AF1A7 /* KnowledgeDetails.m */,
 				2C76E75716B510900071D93A /* AppDelegate.h */,
 				2C76E75816B510900071D93A /* AppDelegate.m */,
 				2C76E76016B510900071D93A /* MainStoryboard_iPhone.storyboard */,
@@ -155,9 +158,6 @@
 				808130C016B6189400B1C641 /* WheresEditorViewController.m */,
 				2C76E76316B510900071D93A /* MainStoryboard_iPad.storyboard */,
 				2C76E74F16B510900071D93A /* Supporting Files */,
-				2C09C77A16C804C8008AF1A7 /* KnowledgeDB.xcdatamodeld */,
-				2C09C77D16C80624008AF1A7 /* KnowledgeDetails.h */,
-				2C09C77E16C80624008AF1A7 /* KnowledgeDetails.m */,
 			);
 			path = GoldenKnowledge;
 			sourceTree = "<group>";

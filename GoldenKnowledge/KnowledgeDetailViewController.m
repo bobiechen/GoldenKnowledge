@@ -149,10 +149,9 @@ static int KNOWLEDGE_DETAILVIEW_SHADOW_HEIGHT = 10;
                                                                              KNOWLEDGE_DETAILVIEW_WIDTH,
                                                                              KNOWLEDGE_DETAILVIEW_SHADOW_HEIGHT)];
     
-    UIImage* imgShadow = [UIImage imageNamed:@"detail_shadow.png"];
-    imageShadow.image = imgShadow;
-    [imgShadow release];
+    imageShadow.image = [UIImage imageNamed:@"detail_shadow.png"];
     [m_scrollView addSubview:imageShadow];
+    [imageShadow release];
     
     CGRect frame2 = m_textKnowledgeContent.frame;
     frame2.origin.y =  KNOWLEDGE_DETAILVIEW_TOPMARGIN;

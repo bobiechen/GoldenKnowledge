@@ -16,5 +16,6 @@
 @dynamic excerpt;
 @dynamic date;
 @dynamic content;
+@dynamic subtitle;
 
 @end
