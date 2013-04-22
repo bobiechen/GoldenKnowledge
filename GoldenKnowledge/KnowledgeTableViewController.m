@@ -98,7 +98,7 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
         KnowledgeDetails* knowledgeDetails = [m_arrayKnowledgePosts objectAtIndex:indexPath.row];
         //cell.textLabel.text = [[m_arrayKnowledgePosts objectAtIndex:indexPath.row] objectForKey:@"title"];
         //cell.detailTextLabel.text = [[m_arrayKnowledgePosts objectAtIndex:indexPath.row] objectForKey:@"date"];
-        cell.textLabel.text = knowledgeDetails.title;
+        cell.textLabel.text = knowledgeDetails.subtitle;
         cell.detailTextLabel.text = knowledgeDetails.date;
         
         return cell;
@@ -216,8 +216,9 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
                     {
                         NSArray* arrayValues = @[ [post objectForKey:@"id"], [post objectForKey:@"title"],
                                                     [post objectForKey:@"title_plain"], [post objectForKey:@"date"],
-                                                    [post objectForKey:@"content"], [post objectForKey:@"excerpt"] ];
-                        NSArray* arrayKeys = @[ @"id", @"title", @"title_plain", @"date", @"content", @"excerpt" ];
+                                                    [post objectForKey:@"content"], [post objectForKey:@"excerpt"],
+                                                    [self retriveSubtitle:[post objectForKey:@"content"]] ];
+                        NSArray* arrayKeys = @[ @"id", @"title", @"title_plain", @"date", @"content", @"excerpt", @"subtitle" ];
                         NSDictionary* dictKnowledge = [NSDictionary dictionaryWithObjects:arrayValues forKeys:arrayKeys];
                         
                         [m_arrayKnowledgePosts addObject:dictKnowledge];
@@ -231,6 +232,32 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
         }];
     
     [queue release];
+}
+
+- (NSString*)retriveSubtitle:(NSString*)html
+{
+    NSScanner* scanner;
+    NSString* tag = nil;
+    scanner = [NSScanner scannerWithString:html];
+    
+    NSString* strSubtitle = @"";
+    
+    while (![scanner isAtEnd]) {
+        [scanner scanUpToString:@"<" intoString:nil];
+        [scanner scanUpToString:@">" intoString:&tag];
+        
+        if ([tag isEqualToString:@"<subtitle"])
+        {
+            [scanner scanUpToString:@">" intoString:nil];
+            html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", tag] withString:@""];
+            [scanner scanUpToString:@"</" intoString:&strSubtitle];
+            html = [html stringByReplacingOccurrencesOfString:strSubtitle withString:@""];
+            [scanner scanUpToString:@">" intoString:&tag];
+            html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", tag] withString:@""];
+        }
+    }
+    
+    return [strSubtitle substringFromIndex:1];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -291,6 +318,7 @@ const NSString* JSON_API_KEYWORD_POSTS =        @"posts";
         knowledgePost.excerpt = [item objectForKey:@"excerpt"];
         knowledgePost.date = [item objectForKey:@"date"];
         knowledgePost.content = [item objectForKey:@"content"];
+        knowledgePost.subtitle = [item objectForKey:@"subtitle"];
         
         NSError* error = nil;
         if (![((AppDelegate*)[sharedApplication delegate]).managedObjectContext save:&error]) {

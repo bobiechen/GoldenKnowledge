@@ -106,7 +106,7 @@
         UILabel* labelText = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 170, 80)];
         labelText.lineBreakMode =  NSLineBreakByTruncatingTail;
         labelText.numberOfLines = 0;
-        labelText.text = currentKnowledge.excerpt;
+        labelText.text = currentKnowledge.subtitle;
         labelText.backgroundColor = [UIColor clearColor];
         [subview addSubview:labelText];
         [labelText release];
